@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    font-family: "PT Sans", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    font-size: small;
+}
+
+
+.main {
+    width: 104%;
+    display: grid;
+    background-color: #312F47;
+    gap: 15px;
+}
+
+.white_color {
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.orange_color {
+    color: #E1801B;
+    font-size: 14px;
+
+}
+
+.amg_ava {
+    width: 100%;
+    /*margin: 0;*/
+}
+
+.info_id {
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: grid;
+    border: 1px solid orange;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+
+}
+
+.client_text {
+    width: 350px;
+    display: inline-block;
+    /*padding: 10px;*/
+}
+
+.mess_text {
+    word-break: break-all;
+}
+
+.info_client {
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    display: grid;
+    border: 1px solid orange;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.container_form {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    display: grid;
+    border: 1px solid orange;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    padding-bottom: 10px;
+
+}
+
+.label_height {
+    height: 110px;
+}
+
+.status_deal {
+    /*background-color: #FAE391;*/
+    text-align: center;
+    color: black;
+    height: 40px;
+    padding-top: 10px;
+    border: 1px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.whatsapp {
+    background-color: #07890D;
+    white-space: nowrap;
+    color: white;
+    height: 40px;
+    border: 1px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.form_div {
+    display: grid;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+.other_div {
+    display: grid;
+    width: 100%;
+    background-color: #312F47;
+}
+
+.date_inp {
+    height: 40px;
+}
+
+select {
+    border: 1px solid #e0e0e0;
+    border-radius: 7px;
+    line-height: 36px;
+    height: 36px;
+    /*text-: center;*/
+
+    color: black;
+    background: #fff;
+}
+
+.button {
+    display: grid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.send {
+    color: white;
+    background-color: #5D8C67;
+    height: 40px;
+    border: 1px;
+    border-radius: 8px;
+}
+
+footer {
+    height: 40px;
+
+}

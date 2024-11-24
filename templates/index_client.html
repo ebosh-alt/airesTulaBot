@@ -1,0 +1,136 @@
+<html lang="ru">
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>CRM INTRUM</title>
+    {# {% block styles %}#}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='style.css') }}">
+    {# {% endblock %}#}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+</head>
+
+
+<body>
+
+<div class="main">
+    <div style="background-color: black">
+        <header content="">
+            <img class="amg_ava" src="{{ url_for('.static', filename='ava.png') }}" alt="">
+        </header>
+    </div>
+    <div class="info_id">
+        <div class="white_color"><a class="orange_color">Имя : </a>{{ user_username }}</div>
+        <div class="white_color"><a class="orange_color">Контакт ID : </a>{{ user_id }}</div>
+        <hr width="100%" color=#E1801B size="1px"/>
+        <div class="white_color"><a class="orange_color">Комментарий в сделке : </a><br>
+            <div class="mess_text">
+                {{ client_text }}
+            </div>
+        </div>
+    </div>
+
+    <div class="info_client">
+        <div class="white_color"><a class="orange_color" style="padding-left: 3px">Сделка ID : </a>{{ sale_id }}</div>
+        <hr width="100%" color=#E1801B size="1px"/>
+        <div class="white_color"><a class="orange_color">Телефон : </a>
+            <a style="padding-left: 11px; text-decoration:none" class="white_color" href="tel:+{{ user_phone }}"
+               target="_blank">+{{ user_phone }}</a></div>
+        <hr width="100%" color=#E1801B size="1px"/>
+        <div class="white_color"><a class="orange_color">E-mail : </a><a style="padding-left:31px">{{ user_mail }}</a>
+        </div>
+        <hr width="100%" color=#E1801B size="1px"/>
+        <div class="white_color"><a class="orange_color">Позвонить : </a><a style="padding-left:2px">{{ call }}</a>
+        </div>
+        <hr width="100%" color=#E1801B size="1px"/>
+
+        <div class="white_color"><a class="orange_color">Коммуникация :</a></div>
+        <div class="button">
+            <a href="https://api.whatsapp.com/send?phone={{ user_phone }}" target="_blank">
+                <button class="whatsapp">
+                    <img style="vertical-align: middle" src="{{ url_for('.static', filename='whatasapp.png') }}"
+                         width="25px" alt=""> WhatsApp
+                </button>
+            </a>
+        </div>
+        <div class="button">
+            <a class="orange_color">Стадия сделки :</a>
+        </div>
+        {% if user_status == "Новый" %}
+        <div class="status_deal" style="background-color: #FB90F8">{{ user_status }}</div>
+        {% elif user_status == "Неотвеченный" %}
+        <div class="status_deal" style="background-color: #FAE393">{{ user_status }}</div>
+        {% elif user_status == "Уточненный" %}
+        <div class="status_deal" style="background-color: #FAE491">{{ user_status }}</div>
+        {% elif user_status == "Отложенный спрос" %}
+        <div class="status_deal" style="background-color: #FAE491">{{ user_status }}</div>
+        {% elif user_status == "Приглашение" %}
+        <div class="status_deal" style="background-color: #FAE491">{{ user_status }}</div>
+        {% elif user_status == "Встреча" %}
+        <div class="status_deal" style="background-color: #A6F3AD">{{ user_status }}</div>
+        {% elif user_status == "Без договора" %}
+        <div class="status_deal" style="background-color: #A7DEE3">{{ user_status }}</div>
+        {% elif user_status == "Договор" %}
+        <div class="status_deal" style="background-color: #A2C0F4">{{ user_status }}</div>
+        {% elif user_status == "Задаток" %}
+        <div class="status_deal" style="background-color: #A8E0E1">{{ user_status }}</div>
+        {% elif user_status == "Закрытие сделки" %}
+        <div class="status_deal" style="background-color: #A2C0F4">{{ user_status }}</div>
+        {% elif user_status == "Отказ" %}
+        <div class="status_deal" style="background-color: #4DBE26">{{ user_status }}</div>
+        {% elif user_status == "АВТООБЗВОН" %}
+        <div class="status_deal" style="background-color: #FC8F94">{{ user_status }}</div>
+        {% elif user_status == "Дубль/брак" %}
+        <div class="status_deal" style="background-color: #BE91F8">{{ user_status }}</div>
+        {% endif %}
+    </div>
+
+    <div class="container_form">
+        <form class="form_div">
+            <label class="white_color" for="statusSelect"></label>
+            <select style="text-align-last: center" name="select" size="1" id="statusSelect">
+                <option value="s1">-- Поменять стадию сделки --</option>
+                <option value="55">Новый</option>
+                <option value="54">Неотвеченный</option>
+                <option value="56">Уточненный</option>
+                <option value="57">Отложенный спрос</option>
+                <option value="58">Приглашение</option>
+                <option value="59">Встреча</option>
+                <option value="65">Без договора</option>
+                <option value="60">Договор</option>
+                <option value="61">Задаток</option>
+                <option value="62">Закрытие сделки</option>
+                <option value="63">Отказ</option>
+                <option value="73">АВТООБЗВОН</option>
+                <option value="72">Дубль/брак</option>
+            </select>
+        </form>
+        <form class="other_div" id="dataForm">
+            <label class="white_color" for="date">
+                <a class="orange_color">Дата следующего касания :</a>
+            </label>
+            <input style="text-align: center" class="date_inp" type="datetime-local" id="date" name="date"/>
+            <span class="validity"></span>
+
+            <hr width="100%" color="orange" size="1px"/>
+
+            <label class="white_color" for="comment">
+                <a class="orange_color">Комментарии и замечания :</a>
+            </label>
+
+            <textarea class="label_height" id="comment" name="comment" maxlength="600"></textarea>
+            <div class="button" onclick="submitForm()">
+                <button class="send">Отправить в CRM AIRES</button>
+            </div>
+        </form>
+        <div id="result"></div>
+    </div>
+    <footer>
+        <div></div>
+    </footer>
+</div>
+<script src="{{ url_for('static', filename = 'script.js') }}"></script>
+</body>
+</html>
