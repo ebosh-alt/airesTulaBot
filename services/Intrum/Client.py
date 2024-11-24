@@ -40,6 +40,7 @@ class ClientIntrum(BaseApi):
             "params[byid]": customer_id,
         }
         response = await self._post(ApiPoint.purchaser_filter, params)
+        logger.info(json.dumps(response, indent=4, ensure_ascii=False))
         if response["status"] != "success":
             return 404
         for json_customer in response["data"]["list"]:
@@ -50,6 +51,7 @@ class ClientIntrum(BaseApi):
             'params[entity_id]': deal_id
         }
         response = await self._post(ApiPoint.sales_comments, params)
+        logger.info(json.dumps(response, indent=4, ensure_ascii=False))
         if response["status"] != "success":
             return 404
         if len(response["data"][str(deal_id)]) == 0:
@@ -62,6 +64,7 @@ class ClientIntrum(BaseApi):
             "params[byid]": deal_id,
         }
         response = await self._post(ApiPoint.deals, params)
+        logger.info(json.dumps(response, indent=4, ensure_ascii=False))
         if response["status"] != "success":
             return 404
         for json_deal in response["data"]["list"]:
@@ -78,6 +81,7 @@ class ClientIntrum(BaseApi):
         }
         deals = []
         response = await self._post(ApiPoint.deals, params)
+        logger.info(json.dumps(response, indent=4, ensure_ascii=False))
         if response["status"] != "success":
             return 404
         for json_deal in response["data"]["list"]:
@@ -89,7 +93,7 @@ class ClientIntrum(BaseApi):
             "params[event_id]": reminder_id,
         }
         response = await self._post(ApiPoint.reminder, params)
-
+        logger.info(json.dumps(response, indent=4, ensure_ascii=False))
         if response["status"] != "success":
             return 404
         reminder = Reminder(**response["data"])
@@ -100,6 +104,8 @@ class ClientIntrum(BaseApi):
             "params[employee_id]": user_id,
         }
         response = await self._post(ApiPoint.missed_reminder, params)
+        logger.info(json.dumps(response, indent=4, ensure_ascii=False))
+
         if response["status"] != "success":
             return 404
         for result in response["data"]:
@@ -117,17 +123,6 @@ class ClientIntrum(BaseApi):
             # reminders.append(reminder)
         return reminders
 
-    # async def change_stage(self, deal_id, stage):
-    #     params = {
-    #         'params[id]': deal_id,
-    #         'params[sales_status_id]': stage
-    #     }
-    #
-    #     response = await self._post(ApiPoint.reminders, params)
-    #     if response["status"] != "success":
-    #         return 404
-    #     return response
-
     async def add_comment(self, deal_id, comment, employee_id):
         params = {
             'params[entity_id]': deal_id,
@@ -136,7 +131,7 @@ class ClientIntrum(BaseApi):
         }
 
         response = await self._post(ApiPoint.sales_add_comment, params)
-        logger.info(response)
+        logger.info(json.dumps(response, indent=4, ensure_ascii=False))
         if response["status"] != "success":
             return 404
         return response
@@ -148,6 +143,7 @@ class ClientIntrum(BaseApi):
             'params[event][dtend]': time_end
         }
         response = await self._post(ApiPoint.org_events_update, params)
+        logger.info(json.dumps(response, indent=4, ensure_ascii=False))
         if response["status"] != "success":
             return 404
         return response
@@ -174,3 +170,4 @@ class ClientIntrum(BaseApi):
         if response["status"] != "success":
             return 404
         return response
+
