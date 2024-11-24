@@ -25,12 +25,12 @@ services:
       - my_flask
     restart: always
 
-  # my_certbot:
-  #   image: certbot/certbot
-  #   container_name: my_certbot
-  #   volumes:
-  #     - ./certbot/conf:/etc/letsencrypt
-  #     - ./certbot/www:/var/www/certbot
-  #   depends_on:
-  #     - my_nginx
-  #   command: certonly --webroot -w /var/www/certbot --force-renewal --email meswff@gmail.com -d tulaastoriabot.ru --agree-tos
+  my_certbot:
+     image: certbot/certbot
+     container_name: my_certbot
+     volumes:
+       - ./certbot/conf:/etc/letsencrypt
+       - ./certbot/www:/var/www/certbot
+     depends_on:
+       - my_nginx
+     command: certonly --webroot -w /var/www/certbot --force-renewal --email meswff@gmail.com -d tulaastoriabot.ru --agree-tos
