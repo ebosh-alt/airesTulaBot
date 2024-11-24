@@ -17,7 +17,7 @@ function submitForm() {
         deal_id: selectedSaleId[3]
     };
 
-    const url = "http://localhost:3000/update";
+    const url = "https://tulaastoriabot.ru/update";
 
     fetch(url, {
         method: 'POST',
