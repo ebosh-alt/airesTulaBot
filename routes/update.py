@@ -21,13 +21,13 @@ async def process_data():
     data = request.get_json()
     deal_id = data['deal_id']
     date = data['date']
+    logger.info(date)
     comment = data['comment']
     client = ClientIntrum(aires_api_key)
     info = await client.get_info(deal_id)
 
     if date:
-        decoded_date = unquote(date)
-        parsed_date = datetime.strptime(decoded_date, "%Y-%m-%dT%H:%M")
+        parsed_date = datetime.strptime(date, "%Y-%m-%dT%H:%M")
         unix_time = int(time.mktime(parsed_date.timetuple()))
         await client.reminder_update(info.reminder_id, str(unix_time), str(unix_time))
 
