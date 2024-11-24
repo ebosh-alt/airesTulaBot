@@ -34,12 +34,11 @@ function submitForm() {
     // .catch(error => {
     //     document.getElementById('result').innerText = "";
     // });
-    console.log(data);
     alert('Данные отправлены в CRM')
 
-    // setTimeout(function () {
-    //     location.reload();
-    // }, 2000);
+    setTimeout(function () {
+        location.reload();
+    }, 3000);
 }
 
 

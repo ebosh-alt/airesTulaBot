@@ -1,4 +1,4 @@
-from aiogram import Dispatcher, Bot
+from aiogram import Bot
 from environs import Env
 
 env = Env()
@@ -6,9 +6,7 @@ env.read_env()
 
 aires_api_key = env('AIRES_API_KEY')
 bot_token = env('BOT_TOKEN')
-dp = Dispatcher()
 bot = Bot(bot_token)
-SQLALCHEMY_DATABASE_URI = f'sqlite+aiosqlite:///data/database.db'
 
 STATUSES = {
     '66': 'New',
@@ -36,6 +34,6 @@ STATUSES = {
     '72': 'Дубль/брак'
 }
 
-FIELD_ID_EVENT = "3771"
+FIELD_ID_EVENT = "3770"
 
 SALE_STAGE_ID = [21, 29, 30, 31, 63, 64, 66, 67, 68, 69]
