@@ -28,7 +28,6 @@ async def process_data():
     if date:
         decoded_date = unquote(date)
         parsed_date = datetime.strptime(decoded_date, "%Y-%m-%dT%H:%M")
-        logger.info(parsed_date)
         unix_time = int(time.mktime(parsed_date.timetuple()))
         await client.reminder_update(info.reminder_id, str(unix_time), str(unix_time))
 
