@@ -36,7 +36,7 @@ function submitForm() {
 
     setTimeout(function () {
         location.reload();
-    }, 2000);
+    }, 3000);
 }
 
 
