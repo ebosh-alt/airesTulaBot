@@ -1,9 +1,11 @@
 import logging
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, tzinfo
 from typing import Dict, Union
 from typing import Optional, List, Any
+from zoneinfo import ZoneInfo
 
+import pytz
 from pydantic import BaseModel, Field, field_validator
 
 logger = logging.getLogger(__name__)
@@ -130,9 +132,11 @@ class Reminder(BaseModel):
         if value is None:
             return None
         if isinstance(value, str) and value.isdigit():
-            dt = datetime.fromtimestamp(int(value))
-            return dt.strftime('%Y-%m-%d %H:%M')
+            tz = pytz.timezone("Europe/Moscow")
+            dt = datetime.fromtimestamp(int(value), tz=tz)
+            return dt#.strftime('%Y-%m-%d %H:%M')
         return None
+
 
 
 class Customer(BaseModel):

@@ -17,7 +17,7 @@ class ClientIntrum(BaseApi):
         if reminder_field:
             reminder_id = reminder_field.value
             reminder = await self.get_reminder(reminder_id)
-            date_notification = reminder.dtstart #.strftime('%Y-%m-%d %H:%M')
+            date_notification = reminder.dtstart.strftime('%Y-%m-%d %H:%M')
         else:
             date_notification = "Время отсутствует"
         purchase = await self.get_customer(deal.customers_id)

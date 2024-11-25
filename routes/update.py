@@ -20,12 +20,12 @@ async def process_data():
     data = request.get_json()
     deal_id = data['deal_id']
     date = data['date']
-    logger.info("date: {date}")
     comment = data['comment']
     client = ClientIntrum(aires_api_key)
     info = await client.get_info(deal_id)
 
     if date:
+        logger.info(f"date: {date}")
         parsed_date = datetime.strptime(date, "%Y-%m-%dT%H:%M")
         logger.info(f"parsed_date: {parsed_date}")
         unix_time = int(time.mktime(parsed_date.timetuple()))
