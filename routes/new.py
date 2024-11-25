@@ -16,7 +16,7 @@ CORS(app)  # Разрешает CORS для всех маршрутов и ис�
 
 
 def button(telegram_id, employee_id, id_offer):
-    keyboard = types.ReplyKeyboardMarkup(row_width=1) #создаем клавиатуру
+    keyboard = types.InlineKeyboardMarkup(row_width=1) #создаем клавиатуру
     web_app_button = types.WebAppInfo(f'https://tulaastoriabot.ru/{telegram_id}/{employee_id}/{id_offer}') #создаем webappinfo - формат хранения url
     one_butt = types.KeyboardButton(text="Перейти в CRM", web_app=web_app_button) #создаем кнопку типа webapp
     keyboard.add(one_butt) #добавляем кнопки в клавиатуру
