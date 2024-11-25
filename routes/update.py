@@ -2,6 +2,7 @@ import logging
 import time
 from datetime import datetime
 
+import pytz
 from flask import Blueprint, request, jsonify
 from flask_cors import CORS
 
@@ -25,10 +26,15 @@ async def process_data():
     info = await client.get_info(deal_id)
 
     if date:
+        timezone = "Europe/Moscow"
         logger.info(f"date: {date}")
-        parsed_date = datetime.strptime(date, "%Y-%m-%dT%H:%M")
-        logger.info(f"parsed_date: {parsed_date}")
-        unix_time = int(time.mktime(parsed_date.timetuple()))
+
+        dt = datetime.strptime(date, "%Y-%m-%dT%H:%M")
+        logger.info(f"dt: {dt}")
+        tz = pytz.timezone(timezone)
+        dt_with_tz = tz.localize(dt)
+        logger.info(f"dt_with_tz: {dt_with_tz}")
+        unix_time = int(dt_with_tz.timestamp())
         logger.info(f"unix_time: {unix_time}")
         await client.reminder_update(info.reminder_id, str(unix_time), str(unix_time))
 
