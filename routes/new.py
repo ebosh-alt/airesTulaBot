@@ -1,4 +1,3 @@
-import asyncio
 import logging
 
 from aiogram.types import InlineKeyboardButton, WebAppInfo, InlineKeyboardMarkup
@@ -32,13 +31,16 @@ async def send_message(telegram_id, text, buttons):
 
 
 @app.route('/post/<telegram_id>/<employee_id>/<id_offer>/<stage_deal>/<ds>', methods=['GET'])
-def get_deal(telegram_id, employee_id, id_offer, stage_deal, ds):
+async def get_deal(telegram_id, employee_id, id_offer, stage_deal, ds):
     if stage_deal != 'highLightTitle.png':
         if stage_deal in [55, 66]:
             text = f'Новая сделка - Обращение\nID сделки: #{id_offer}'
         else:
             text = f'Новая сделка - Обращение\nID сделки: #{id_offer}\nСтадия: #{STATUSES.get(stage_deal, "Неизвестная")}'
-        asyncio.run(send_message(telegram_id, text, button(telegram_id, employee_id, id_offer)))
+        # asyncio.run(send_message(telegram_id, text, button(telegram_id, employee_id, id_offer)))
+        await bot.send_message(chat_id=telegram_id,
+                               text=text,
+                               reply_markup=button(telegram_id, employee_id, id_offer))
         return jsonify({'status': "success"})
     return jsonify({'status': "false"})
 
