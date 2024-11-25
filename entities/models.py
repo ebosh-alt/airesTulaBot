@@ -167,7 +167,7 @@ class Customer(BaseModel):
         if len(data["email"]) == 0:
             data["email"] = "Почта отсутствует"
         else:
-            data["email"] = data["email"][0]
+            data["email"] = data["email"][0]["mail"]
 
         if len(data["phone"]) == 0:
             data["phone"] = "Номер телефона отсутствует"
