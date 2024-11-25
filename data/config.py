@@ -1,3 +1,4 @@
+import telebot
 from aiogram import Bot
 from environs import Env
 
@@ -6,7 +7,8 @@ env.read_env()
 
 aires_api_key = env('AIRES_API_KEY')
 bot_token = env('BOT_TOKEN')
-bot = Bot(bot_token)
+# bot = Bot(bot_token)
+bot = telebot.TeleBot("TOKEN", parse_mode=None) # You can set parse_mode by default. HTML or MARKDOWN
 
 STATUSES = {
     '66': 'New',
