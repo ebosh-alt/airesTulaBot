@@ -12,7 +12,7 @@ app = Blueprint('update', __name__)
 
 logger = logging.getLogger(__name__)
 
-CORS(app)  # Разрешает CORS для всех маршрутов и источников
+CORS(app)
 
 
 @app.route('/update', methods=['POST'])
