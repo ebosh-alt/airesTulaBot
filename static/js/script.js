@@ -19,25 +19,28 @@ function submitForm() {
 
     const url = "https://tulaastoriabot.ru/update";
     // const url = "http://localhost:3000/update";
-
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    })
-        .then(response => response.json())
-        .then(result => {
-            document.getElementById('result').innerText = "";
-
+    if (selectedDate && !selectedComment) {
+        alert("Пожалуйста, введите комментарий");
+    } else {
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
         })
+            .then(response => response.json())
+            .then(result => {
+                document.getElementById('result').innerText = "";
 
-    alert('Данные отправлены в CRM')
+            })
 
-    setTimeout(function () {
-        location.reload();
-    }, 3000);
+        alert('Данные отправлены в CRM')
+
+        setTimeout(function () {
+            location.reload();
+        }, 3000);
+    }
 }
 
 

@@ -92,6 +92,14 @@ body {
 
 .label_height {
     height: 110px;
+    /*height: 100px; !* Высота поля *!*/
+    box-sizing: border-box; /* Учитывает отступы внутри высоты */
+    padding-top: 5px; /* Убирает внутренний отступ сверху */
+    line-height: 1.2; /* Настраивает расстояние между строками */
+    vertical-align: top; /* Текст прижат к верху */
+    text-align: start; /* Дополнительно прижимаем текст к левому краю */
+    font-size: 16px; /* Размер шрифта */
+
 }
 
 .status_deal {

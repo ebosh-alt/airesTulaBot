@@ -3,4 +3,3 @@ venv/
 .env
 *.idea/
 log.logging
-static/js/script.js
