@@ -1,9 +1,8 @@
 import logging
 from dataclasses import dataclass
-from datetime import datetime, tzinfo
+from datetime import datetime
 from typing import Dict, Union
 from typing import Optional, List, Any
-from zoneinfo import ZoneInfo
 
 import pytz
 from pydantic import BaseModel, Field, field_validator
@@ -166,14 +165,18 @@ class Customer(BaseModel):
     def from_json(cls, data: dict[str, Any]):
         if len(data["email"]) == 0:
             data["email"] = "Почта отсутствует"
+        elif not data["email"]:
+            data["email"] = "Почта отсутствует"
         else:
             data["email"] = data["email"][0]["mail"]
 
         if len(data["phone"]) == 0:
             data["phone"] = "Номер телефона отсутствует"
+        elif not data["phone"]:
+            data["phone"] = "Номер телефона отсутствует"
         else:
             data["phone"] = format_phone_number(data["phone"][0]["phone"])
-        # data["phone"] = format_phone_number(data["phone"])
+
         fields_data = data.get("fields", {})
         filtered_fields = {k: v for k, v in fields_data.items()}
         data["fields"] = {key: FieldData(**value) for key, value in

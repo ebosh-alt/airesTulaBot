@@ -36,7 +36,7 @@ async def process_data():
         logger.info(f"dt_with_tz: {dt_with_tz}")
         unix_time = int(dt_with_tz.timestamp())
         logger.info(f"unix_time: {unix_time}")
-        await client.reminder_update(info.reminder_id, str(unix_time), str(unix_time))
+        await client.update_reminder(info.reminder_id, str(unix_time), str(unix_time))
 
     if comment:
         await client.add_comment(deal_id, comment, info.employee_id)

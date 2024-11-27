@@ -1,9 +1,7 @@
-import json
-
 from data.config import FIELD_ID_EVENT
 # from data.config import DIVISION_ID, REQUIRED_FIELDS
 from entities.models import ApiPoint, User, Reminder, Deal, Customer, InfoModel
-from services.Intrum.Base import BaseApi, logger
+from services.Intrum.Base import BaseApi
 
 
 class ClientIntrum(BaseApi):
@@ -137,11 +135,12 @@ class ClientIntrum(BaseApi):
             return 404
         return response
 
-    async def reminder_update(self, reminder_id, time_start, time_end):
+    async def update_reminder(self, reminder_id, time_start, time_end):
         params = {
             'params[event][id]': reminder_id,
             'params[event][dtstart]': time_start,
-            'params[event][dtend]': time_end
+            'params[event][dtend]': time_end,
+            'params[event][is_queued]': 1
         }
         response = await self._post(ApiPoint.org_events_update, params)
         # logger.info(json.dumps(response, indent=4, ensure_ascii=False))
