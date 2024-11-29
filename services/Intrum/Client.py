@@ -15,7 +15,10 @@ class ClientIntrum(BaseApi):
         if reminder_field:
             reminder_id = reminder_field.value
             reminder = await self.get_reminder(reminder_id)
-            date_notification = reminder.dtstart.strftime('%Y-%m-%d %H:%M')
+            if reminder == 404:
+                date_notification = "Время отсутствует"
+            else:
+                date_notification = reminder.dtstart.strftime('%Y-%m-%d %H:%M')
         else:
             date_notification = "Время отсутствует"
         purchase = await self.get_customer(deal.customers_id)
@@ -95,6 +98,8 @@ class ClientIntrum(BaseApi):
         if response["status"] != "success":
             return 404
         reminder = Reminder(**response["data"])
+        if reminder.group_id == "0":
+            return 404
         return reminder
 
     async def get_missed_reminder(self, user_id, reminder_id):  # TODO: модель для json объекта
@@ -163,6 +168,7 @@ class ClientIntrum(BaseApi):
     async def delete_reminder(self, reminder_id):
         params = {
             'params[id]': reminder_id,
+            # 'params[event][queue]': 1,
         }
 
         response = await self._post(ApiPoint.reminder_delete, params)

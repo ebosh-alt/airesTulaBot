@@ -59,29 +59,29 @@
             <a class="orange_color">Стадия сделки :</a>
         </div>
         {% if customer_status == "Новый" %}
-        <div class="status_deal" style="background-color: #FB90F8">{{ customer_status }}</div>
+        <div class="status_deal" style="background-color: #F891FA">{{ customer_status }}</div>
         {% elif customer_status == "Неотвеченный" %}
-        <div class="status_deal" style="background-color: #FAE393">{{ customer_status }}</div>
+        <div class="status_deal" style="background-color: #F2D2E5">{{ customer_status }}</div>
         {% elif customer_status == "Уточненный" %}
-        <div class="status_deal" style="background-color: #FAE491">{{ customer_status }}</div>
+        <div class="status_deal" style="background-color: #FAE391">{{ customer_status }}</div>
         {% elif customer_status == "Отложенный спрос" %}
-        <div class="status_deal" style="background-color: #FAE491">{{ customer_status }}</div>
+        <div class="status_deal" style="background-color: #FAE391">{{ customer_status }}</div>
         {% elif customer_status == "Приглашение" %}
-        <div class="status_deal" style="background-color: #FAE491">{{ customer_status }}</div>
+        <div class="status_deal" style="background-color: #FAE391">{{ customer_status }}</div>
         {% elif customer_status == "Встреча" %}
-        <div class="status_deal" style="background-color: #A6F3AD">{{ customer_status }}</div>
+        <div class="status_deal" style="background-color: #A8F3AB">{{ customer_status }}</div>
         {% elif customer_status == "Без договора" %}
-        <div class="status_deal" style="background-color: #A7DEE3">{{ customer_status }}</div>
+        <div class="status_deal" style="background-color: #A5DFE2">{{ customer_status }}</div>
         {% elif customer_status == "Договор" %}
-        <div class="status_deal" style="background-color: #A2C0F4">{{ customer_status }}</div>
+        <div class="status_deal" style="background-color: #A5DFE2">{{ customer_status }}</div>
         {% elif customer_status == "Задаток" %}
-        <div class="status_deal" style="background-color: #A8E0E1">{{ customer_status }}</div>
+        <div class="status_deal" style="background-color: #A1C1F0">{{ customer_status }}</div>
         {% elif customer_status == "Закрытие сделки" %}
-        <div class="status_deal" style="background-color: #A2C0F4">{{ customer_status }}</div>
+        <div class="status_deal" style="background-color: #4FBF27">{{ customer_status }}</div>
         {% elif customer_status == "Отказ" %}
-        <div class="status_deal" style="background-color: #4DBE26">{{ customer_status }}</div>
+        <div class="status_deal" style="background-color: #FA9191">{{ customer_status }}</div>
         {% elif customer_status == "АВТООБЗВОН" %}
-        <div class="status_deal" style="background-color: #FC8F94">{{ customer_status }}</div>
+        <div class="status_deal" style="background-color: #BF91FA">{{ customer_status }}</div>
         {% elif customer_status == "Дубль/брак" %}
         <div class="status_deal" style="background-color: #BE91F8">{{ customer_status }}</div>
         {% endif %}

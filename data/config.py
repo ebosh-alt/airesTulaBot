@@ -1,5 +1,4 @@
 import telebot
-from aiogram import Bot
 from environs import Env
 
 env = Env()
@@ -8,7 +7,7 @@ env.read_env()
 aires_api_key = env('AIRES_API_KEY')
 bot_token = env('BOT_TOKEN')
 # bot = Bot(bot_token)
-bot = telebot.TeleBot(bot_token, parse_mode=None) # You can set parse_mode by default. HTML or MARKDOWN
+bot = telebot.TeleBot(bot_token, parse_mode=None)
 
 STATUSES = {
     '66': 'New',
@@ -32,10 +31,13 @@ STATUSES = {
     '61': 'Задаток',
     '62': 'Закрытие сделки',
     '63': 'Отказ',
-    '73': 'АВТООБЗВОН',
-    '72': 'Дубль/брак'
+    '72': 'Дубль/брак',
+    '73': 'АВТООБЗВОН'
 }
+
 
 FIELD_ID_EVENT = "3770"
 
 SALE_STAGE_ID = [21, 29, 30, 31, 63, 64, 66, 67, 68, 69]
+
+STATUSES_DELETE_REMINDER = ["62", "63", "72", "73", "93"]
